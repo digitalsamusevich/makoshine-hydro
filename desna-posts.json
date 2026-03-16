@@ -24,7 +24,7 @@
           "level": 343
         }
       ],
-      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%9D%D0%BE%D0%B2%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%A1%D1%96%D0%B2%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%22%2C%22data%22%3A%5B340%2C343%5D%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%9D%D0%BE%D0%B2%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%A1%D1%96%D0%B2%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
+      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%9D%D0%BE%D0%B2%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%A1%D1%96%D0%B2%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%22%2C%22data%22%3A%5B340%2C343%5D%2C%22fill%22%3Afalse%2C%22tension%22%3A0.2%2C%22borderWidth%22%3A3%2C%22pointRadius%22%3A4%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%9D%D0%BE%D0%B2%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%20%D0%A1%D1%96%D0%B2%D0%B5%D1%80%D1%81%D1%8C%D0%BA%D0%B8%D0%B9%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
     },
     "80123": {
       "id": "80123",
@@ -48,7 +48,7 @@
           "level": 454
         }
       ],
-      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%A0%D0%BE%D0%B7%D0%BB%D1%8C%D0%BE%D1%82%D0%B8%22%2C%22data%22%3A%5B444%2C454%5D%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%A0%D0%BE%D0%B7%D0%BB%D1%8C%D0%BE%D1%82%D0%B8%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
+      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%A0%D0%BE%D0%B7%D0%BB%D1%8C%D0%BE%D1%82%D0%B8%22%2C%22data%22%3A%5B444%2C454%5D%2C%22fill%22%3Afalse%2C%22tension%22%3A0.2%2C%22borderWidth%22%3A3%2C%22pointRadius%22%3A4%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%A0%D0%BE%D0%B7%D0%BB%D1%8C%D0%BE%D1%82%D0%B8%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
     },
     "80127": {
       "id": "80127",
@@ -72,7 +72,7 @@
           "level": 407
         }
       ],
-      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%9C%D0%B0%D0%BA%D0%BE%D1%88%D0%B8%D0%BD%D0%B5%22%2C%22data%22%3A%5B399%2C407%5D%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%9C%D0%B0%D0%BA%D0%BE%D1%88%D0%B8%D0%BD%D0%B5%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
+      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%9C%D0%B0%D0%BA%D0%BE%D1%88%D0%B8%D0%BD%D0%B5%22%2C%22data%22%3A%5B399%2C407%5D%2C%22fill%22%3Afalse%2C%22tension%22%3A0.2%2C%22borderWidth%22%3A3%2C%22pointRadius%22%3A4%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%9C%D0%B0%D0%BA%D0%BE%D1%88%D0%B8%D0%BD%D0%B5%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
     },
     "80131": {
       "id": "80131",
@@ -96,9 +96,9 @@
           "level": 291
         }
       ],
-      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%A7%D0%B5%D1%80%D0%BD%D1%96%D0%B3%D1%96%D0%B2%22%2C%22data%22%3A%5B296%2C291%5D%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%A7%D0%B5%D1%80%D0%BD%D1%96%D0%B3%D1%96%D0%B2%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
+      "chart_url": "https://quickchart.io/chart?c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2215.03%22%2C%2216.03%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%A7%D0%B5%D1%80%D0%BD%D1%96%D0%B3%D1%96%D0%B2%22%2C%22data%22%3A%5B296%2C291%5D%2C%22fill%22%3Afalse%2C%22tension%22%3A0.2%2C%22borderWidth%22%3A3%2C%22pointRadius%22%3A4%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%A7%D0%B5%D1%80%D0%BD%D1%96%D0%B3%D1%96%D0%B2%22%7D%2C%22legend%22%3A%7B%22display%22%3Atrue%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D1%81%D0%BC%22%7D%7D%7D%7D%7D"
     }
   },
   "errors": [],
-  "fetched_at": "2026-03-16T19:18:45.658Z"
+  "fetched_at": "2026-03-16T19:42:02.806Z"
 }
