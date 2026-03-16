@@ -76,10 +76,7 @@ function updateHistory(finalResult) {
       });
     }
 
-    // залишаємо тільки останні 14 днів
-    if (history[id].length > 14) {
-      history[id] = history[id].slice(-14);
-    }
+   
   }
 
   saveHistory(history);
