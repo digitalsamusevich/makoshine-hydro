@@ -95,43 +95,118 @@ function buildQuickChartUrl(title, historyItems) {
   const labels = historyItems.map(item => formatShortDate(item.date));
   const data = historyItems.map(item => item.level);
 
+  const firstLevel = data.length ? data[0] : 0;
+  const lastLevel = data.length ? data[data.length - 1] : 0;
+  const isFalling = lastLevel < firstLevel;
+
+  const lineColor = isFalling ? 'rgb(22, 163, 74)' : 'rgb(37, 99, 235)';
+  const fillColor = isFalling ? 'rgba(22, 163, 74, 0.20)' : 'rgba(37, 99, 235, 0.20)';
+
   const chartConfig = {
     type: 'line',
     data: {
       labels,
-    datasets: [
-  {
-    label: title,
-    data,
-    fill: false,
-    tension: 0.2,
-    borderWidth: 3,
-    pointRadius: 4
-  }
-]
+      datasets: [
+        {
+          label: title,
+          data: data,
+          borderColor: lineColor,
+          backgroundColor: fillColor,
+          fill: true,
+          tension: 0.35,
+          borderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 5,
+          pointBackgroundColor: lineColor,
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2
+        }
+      ]
     },
     options: {
+      layout: {
+        padding: {
+          top: 10,
+          right: 18,
+          bottom: 10,
+          left: 10
+        }
+      },
       plugins: {
         title: {
           display: true,
-          text: title
+          text: `${title} — рівень води`,
+          font: {
+            size: 18,
+            family: 'sans-serif'
+          },
+          color: '#1f2937',
+          padding: {
+            bottom: 12
+          }
         },
         legend: {
-          display: true
+          display: false
         }
       },
       scales: {
+        x: {
+          ticks: {
+            color: '#6b7280',
+            font: {
+              size: 11
+            }
+          },
+          grid: {
+            color: 'rgba(0,0,0,0.04)'
+          }
+        },
         y: {
+          ticks: {
+            color: '#6b7280',
+            font: {
+              size: 11
+            },
+            callback: 'function(value){ return value + " см"; }'
+          },
           title: {
             display: true,
-            text: 'см'
+            text: 'Рівень, см',
+            color: '#374151',
+            font: {
+              size: 12
+            }
+          },
+          grid: {
+            color: 'rgba(0,0,0,0.06)'
           }
         }
       }
-    }
+    },
+    plugins: [
+      {
+        id: 'lastValueLabel',
+        afterDatasetsDraw(chart) {
+          const { ctx } = chart;
+          const meta = chart.getDatasetMeta(0);
+          if (!meta || !meta.data || !meta.data.length) return;
+
+          const lastPoint = meta.data[meta.data.length - 1];
+          const value = data[data.length - 1];
+          if (value === undefined) return;
+
+          ctx.save();
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillStyle = lineColor;
+          ctx.textAlign = 'left';
+          ctx.fillText(`${value} см`, lastPoint.x + 8, lastPoint.y - 8);
+          ctx.restore();
+        }
+      }
+    ]
   };
 
-  return 'https://quickchart.io/chart?c=' + encodeURIComponent(JSON.stringify(chartConfig));
+  return 'https://quickchart.io/chart?width=900&height=420&c=' + encodeURIComponent(JSON.stringify(chartConfig));
 }
 
 function attachChartsToResult(finalResult) {
