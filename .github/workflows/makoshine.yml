@@ -42,10 +42,12 @@ jobs:
           git commit -m "update desna posts data" || echo "no changes"
           git push
 
-      - name: Upload artifacts
-  uses: actions/upload-artifact@v4
-  with:
-    name: desna-data
+      - name: Upload desna-posts.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: desna-posts-json
+          path: desna-posts.json
+
     path: |
       desna-posts.json
       desna-history.json
