@@ -71,9 +71,11 @@ function updateHistory(finalResult) {
       lastEntry.level = post.water_level_cm;
     } else {
       history[id].push({
-        date: today,
-        level: post.water_level_cm
-      });
+  date: today,
+  level: post.water_level_cm,
+  temperature: post.water_temperature_c,
+  delta: post.delta_24h_cm
+});
     }
 
    
