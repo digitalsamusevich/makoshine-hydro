@@ -3,8 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 const PAGE_URL = 'https://www.meteo.gov.ua/ua/Shchodenna-hidrolohichna-situaciya';
+
 const CACHE_FILE = path.join(__dirname, 'marker-cache.json');
 const OUTPUT_FILE = path.join(__dirname, 'desna-posts.json');
+const HISTORY_FILE = path.join(__dirname, 'desna-history.json');
 
 const TARGETS = [
   { id: '80122', post: 'Новгород Сіверський' },
@@ -23,6 +25,7 @@ function loadCache() {
       return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
     }
   } catch (e) {}
+
   return {};
 }
 
@@ -80,9 +83,11 @@ function parsePopupText(text) {
 
 async function getPopupText(page) {
   const popup = page.locator('.leaflet-popup-content');
+
   if (await popup.count()) {
     return await popup.first().innerText();
   }
+
   return '';
 }
 
@@ -91,18 +96,20 @@ async function clickMarkerAndRead(page, index) {
   const count = await markers.count();
 
   if (index < 0 || index >= count) {
-    return { ok: false, error: `Індекс ${index} поза межами. Маркерів: ${count}` };
+    return { ok: false };
   }
 
   const marker = markers.nth(index);
 
   try {
     await marker.click({ force: true, timeout: 5000 });
+
     await sleep(400);
 
     const popupText = await getPopupText(page);
+
     if (!popupText) {
-      return { ok: false, error: `Немає popup після кліку по маркеру ${index}` };
+      return { ok: false };
     }
 
     return {
@@ -111,37 +118,41 @@ async function clickMarkerAndRead(page, index) {
       popupText,
       parsed: parsePopupText(popupText)
     };
-  } catch (e) {
-    return {
-      ok: false,
-      error: `Помилка кліку по маркеру ${index}: ${e.message}`
-    };
+
+  } catch {
+    return { ok: false };
   }
 }
 
 async function getUniqueMarkerIndices(page) {
   const markers = page.locator('.leaflet-marker-icon');
+
   const count = await markers.count();
+
   const seen = new Set();
   const result = [];
 
   for (let i = 0; i < count; i++) {
     try {
       const style = await markers.nth(i).evaluate(el => el.style.transform || '');
+
       if (!seen.has(style)) {
         seen.add(style);
         result.push(i);
       }
-    } catch (e) {}
+
+    } catch {}
   }
 
   return result;
 }
 
 async function findTarget(page, target, cache, uniqueIndices) {
+
   const cachedIndex = cache[target.id];
 
   if (typeof cachedIndex === 'number') {
+
     const fastTry = await clickMarkerAndRead(page, cachedIndex);
 
     if (
@@ -149,6 +160,7 @@ async function findTarget(page, target, cache, uniqueIndices) {
       fastTry.parsed.post &&
       fastTry.parsed.post.toLowerCase() === target.post.toLowerCase()
     ) {
+
       return {
         ok: true,
         mode: 'cache',
@@ -159,13 +171,19 @@ async function findTarget(page, target, cache, uniqueIndices) {
   }
 
   for (const i of uniqueIndices) {
+
     const result = await clickMarkerAndRead(page, i);
 
     if (!result.ok) continue;
 
-    const parsedPost = result.parsed.post ? result.parsed.post.toLowerCase() : '';
+    const parsedPost = result.parsed.post
+      ? result.parsed.post.toLowerCase()
+      : '';
+
     if (parsedPost === target.post.toLowerCase()) {
+
       cache[target.id] = i;
+
       return {
         ok: true,
         mode: 'scan',
@@ -175,16 +193,47 @@ async function findTarget(page, target, cache, uniqueIndices) {
     }
   }
 
-  return {
-    ok: false,
-    error: `Не вдалося знайти пост: ${target.post}`
-  };
+  return { ok: false };
+}
+
+function updateHistory(posts) {
+
+  let history = {};
+
+  if (fs.existsSync(HISTORY_FILE)) {
+    history = JSON.parse(fs.readFileSync(HISTORY_FILE, 'utf8'));
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+
+  for (const id in posts) {
+
+    const post = posts[id];
+
+    if (!history[id]) history[id] = [];
+
+    const last = history[id][history[id].length - 1];
+
+    if (!last || last.date !== today) {
+
+      history[id].push({
+        date: today,
+        level: post.water_level_cm
+      });
+
+      if (history[id].length > 14) {
+        history[id].shift();
+      }
+    }
+  }
+
+  fs.writeFileSync(HISTORY_FILE, JSON.stringify(history, null, 2), 'utf8');
 }
 
 (async () => {
+
   const browser = await chromium.launch({
-    headless: true,
-    slowMo: 0
+    headless: true
   });
 
   const page = await browser.newPage({
@@ -192,21 +241,27 @@ async function findTarget(page, target, cache, uniqueIndices) {
   });
 
   try {
+
     await page.goto(PAGE_URL, { waitUntil: 'domcontentloaded', timeout: 90000 });
+
     await page.waitForSelector('.leaflet-container', { timeout: 30000 });
     await page.waitForSelector('.leaflet-marker-icon', { timeout: 30000 });
+
     await sleep(2000);
 
     const cache = loadCache();
+
     const uniqueIndices = await getUniqueMarkerIndices(page);
 
     const posts = {};
     const errors = [];
 
     for (const target of TARGETS) {
+
       const result = await findTarget(page, target, cache, uniqueIndices);
 
       if (result.ok) {
+
         posts[target.id] = {
           id: target.id,
           post: target.post,
@@ -214,11 +269,12 @@ async function findTarget(page, target, cache, uniqueIndices) {
           found_index: result.found_index,
           ...result.data
         };
+
       } else {
+
         errors.push({
           id: target.id,
-          post: target.post,
-          error: result.error
+          post: target.post
         });
       }
     }
@@ -234,7 +290,11 @@ async function findTarget(page, target, cache, uniqueIndices) {
     };
 
     saveResult(finalResult);
+
+    updateHistory(posts);
+
   } catch (err) {
+
     const errorResult = {
       ok: false,
       error: err.message,
@@ -242,38 +302,10 @@ async function findTarget(page, target, cache, uniqueIndices) {
     };
 
     saveResult(errorResult);
+
   } finally {
+
     await browser.close();
   }
+
 })();
-
-
-const fs = require("fs");
-
-const historyFile = "desna-history.json";
-
-let history = {};
-
-if (fs.existsSync(historyFile)) {
-  history = JSON.parse(fs.readFileSync(historyFile));
-}
-
-const today = new Date().toISOString().slice(0, 10);
-
-for (const id in result.posts) {
-  const post = result.posts[id];
-
-  if (!history[id]) history[id] = [];
-
-  history[id].push({
-    date: today,
-    level: post.water_level_cm
-  });
-
-  // залишаємо тільки 14 днів
-  if (history[id].length > 14) {
-    history[id].shift();
-  }
-}
-
-fs.writeFileSync(historyFile, JSON.stringify(history, null, 2));
