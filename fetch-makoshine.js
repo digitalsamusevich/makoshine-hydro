@@ -99,12 +99,16 @@ function buildQuickChartUrl(title, historyItems) {
     type: 'line',
     data: {
       labels,
-      datasets: [
-        {
-          label: title,
-          data
-        }
-      ]
+    datasets: [
+  {
+    label: title,
+    data,
+    fill: false,
+    tension: 0.2,
+    borderWidth: 3,
+    pointRadius: 4
+  }
+]
     },
     options: {
       plugins: {
