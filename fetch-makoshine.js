@@ -246,3 +246,34 @@ async function findTarget(page, target, cache, uniqueIndices) {
     await browser.close();
   }
 })();
+
+
+const fs = require("fs");
+
+const historyFile = "desna-history.json";
+
+let history = {};
+
+if (fs.existsSync(historyFile)) {
+  history = JSON.parse(fs.readFileSync(historyFile));
+}
+
+const today = new Date().toISOString().slice(0, 10);
+
+for (const id in result.posts) {
+  const post = result.posts[id];
+
+  if (!history[id]) history[id] = [];
+
+  history[id].push({
+    date: today,
+    level: post.water_level_cm
+  });
+
+  // залишаємо тільки 14 днів
+  if (history[id].length > 14) {
+    history[id].shift();
+  }
+}
+
+fs.writeFileSync(historyFile, JSON.stringify(history, null, 2));
