@@ -4,12 +4,14 @@ const path = require('path');
 
 const PAGE_URL = 'https://www.meteo.gov.ua/ua/Shchodenna-hidrolohichna-situaciya';
 const CACHE_FILE = path.join(__dirname, 'marker-cache.json');
-const OUTPUT_FILE = path.join(__dirname, 'makoshine.json');
+const OUTPUT_FILE = path.join(__dirname, 'desna-posts.json');
 
-const TARGET = {
-  id: '80127',
-  post: 'Макошине'
-};
+const TARGETS = [
+  { id: '80122', post: 'Новгород Сіверський' },
+  { id: '80123', post: 'Розльоти' },
+  { id: '80127', post: 'Макошине' },
+  { id: '80131', post: 'Чернігів' }
+];
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -136,6 +138,49 @@ async function getUniqueMarkerIndices(page) {
   return result;
 }
 
+async function findTarget(page, target, cache, uniqueIndices) {
+  const cachedIndex = cache[target.id];
+
+  if (typeof cachedIndex === 'number') {
+    const fastTry = await clickMarkerAndRead(page, cachedIndex);
+
+    if (
+      fastTry.ok &&
+      fastTry.parsed.post &&
+      fastTry.parsed.post.toLowerCase() === target.post.toLowerCase()
+    ) {
+      return {
+        ok: true,
+        mode: 'cache',
+        found_index: cachedIndex,
+        data: fastTry.parsed
+      };
+    }
+  }
+
+  for (const i of uniqueIndices) {
+    const result = await clickMarkerAndRead(page, i);
+
+    if (!result.ok) continue;
+
+    const parsedPost = result.parsed.post ? result.parsed.post.toLowerCase() : '';
+    if (parsedPost === target.post.toLowerCase()) {
+      cache[target.id] = i;
+      return {
+        ok: true,
+        mode: 'scan',
+        found_index: i,
+        data: result.parsed
+      };
+    }
+  }
+
+  return {
+    ok: false,
+    error: `Не вдалося знайти пост: ${target.post}`
+  };
+}
+
 (async () => {
   const browser = await chromium.launch({
     headless: true,
@@ -153,102 +198,42 @@ async function getUniqueMarkerIndices(page) {
     await sleep(2000);
 
     const cache = loadCache();
-    const cachedIndex = cache[TARGET.id];
-
-    if (typeof cachedIndex === 'number') {
-      console.log(`Пробую кешований індекс: ${cachedIndex}`);
-
-      const fastTry = await clickMarkerAndRead(page, cachedIndex);
-
-      if (
-        fastTry.ok &&
-        fastTry.parsed.post &&
-        fastTry.parsed.post.toLowerCase() === TARGET.post.toLowerCase()
-      ) {
-        const result = {
-          ok: true,
-          mode: 'cache',
-          target: TARGET,
-          marker_match: {
-            found_index: cachedIndex
-          },
-          data: fastTry.parsed,
-          fetched_at: new Date().toISOString()
-        };
-
-        saveResult(result);
-        console.log(JSON.stringify(result, null, 2));
-        console.log(`\nJSON збережено у файл: ${OUTPUT_FILE}`);
-        await browser.close();
-        return;
-      }
-
-      console.log('Кешований індекс не підійшов, запускаю повний пошук...');
-    }
-
     const uniqueIndices = await getUniqueMarkerIndices(page);
-    console.log(`Унікальних маркерів для перевірки: ${uniqueIndices.length}`);
 
-    let found = false;
-    let foundIndex = -1;
-    let popupText = '';
+    const posts = {};
+    const errors = [];
 
-    for (const i of uniqueIndices) {
-      const result = await clickMarkerAndRead(page, i);
+    for (const target of TARGETS) {
+      const result = await findTarget(page, target, cache, uniqueIndices);
 
-      if (!result.ok) {
-        console.log(result.error);
-        continue;
-      }
-
-      popupText = result.popupText;
-      const shortText = popupText.replace(/\s+/g, ' ').trim();
-
-      console.log(`Маркер ${i}: ${shortText}`);
-
-      if (
-        result.parsed.post &&
-        result.parsed.post.toLowerCase() === TARGET.post.toLowerCase()
-      ) {
-        found = true;
-        foundIndex = i;
-        break;
+      if (result.ok) {
+        posts[target.id] = {
+          id: target.id,
+          post: target.post,
+          mode: result.mode,
+          found_index: result.found_index,
+          ...result.data
+        };
+      } else {
+        errors.push({
+          id: target.id,
+          post: target.post,
+          error: result.error
+        });
       }
     }
 
-    if (!found) {
-      const errorResult = {
-        ok: false,
-        error: 'Не вдалося знайти popup для поста Макошине',
-        fetched_at: new Date().toISOString()
-      };
-
-      saveResult(errorResult);
-      console.log(JSON.stringify(errorResult, null, 2));
-      await browser.close();
-      return;
-    }
-
-    const parsed = parsePopupText(popupText);
-
-    cache[TARGET.id] = foundIndex;
     saveCache(cache);
 
-    const result = {
-      ok: true,
-      mode: 'scan',
-      target: TARGET,
-      marker_match: {
-        found_index: foundIndex
-      },
-      data: parsed,
+    const finalResult = {
+      ok: errors.length === 0,
+      river_group: 'Десна',
+      posts,
+      errors,
       fetched_at: new Date().toISOString()
     };
 
-    saveResult(result);
-    console.log(JSON.stringify(result, null, 2));
-    console.log(`\nJSON збережено у файл: ${OUTPUT_FILE}`);
-    console.log('Індекс збережено в marker-cache.json');
+    saveResult(finalResult);
   } catch (err) {
     const errorResult = {
       ok: false,
@@ -257,7 +242,6 @@ async function getUniqueMarkerIndices(page) {
     };
 
     saveResult(errorResult);
-    console.log(JSON.stringify(errorResult, null, 2));
   } finally {
     await browser.close();
   }
