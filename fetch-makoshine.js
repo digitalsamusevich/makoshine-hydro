@@ -85,6 +85,68 @@ function updateHistory(finalResult) {
   saveHistory(history);
 }
 
+function formatShortDate(dateStr) {
+  const parts = dateStr.split('-'); // YYYY-MM-DD
+  if (parts.length !== 3) return dateStr;
+  return `${parts[2]}.${parts[1]}`;
+}
+
+function buildQuickChartUrl(title, historyItems) {
+  const labels = historyItems.map(item => formatShortDate(item.date));
+  const data = historyItems.map(item => item.level);
+
+  const chartConfig = {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: title,
+          data
+        }
+      ]
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: title
+        },
+        legend: {
+          display: true
+        }
+      },
+      scales: {
+        y: {
+          title: {
+            display: true,
+            text: 'см'
+          }
+        }
+      }
+    }
+  };
+
+  return 'https://quickchart.io/chart?c=' + encodeURIComponent(JSON.stringify(chartConfig));
+}
+
+function attachChartsToResult(finalResult) {
+  const history = loadHistory();
+
+  if (!finalResult.posts) return finalResult;
+
+  for (const id in finalResult.posts) {
+    const post = finalResult.posts[id];
+    const historyItems = history[id] || [];
+
+    post.history_points = historyItems;
+    post.chart_url = buildQuickChartUrl(post.post, historyItems);
+  }
+
+  return finalResult;
+}
+
+
 function parsePopupText(text) {
   const cleaned = text.replace(/\s+/g, ' ').trim();
 
@@ -284,9 +346,10 @@ async function findTarget(page, target, cache, uniqueIndices) {
       fetched_at: new Date().toISOString()
     };
 
-    saveResult(finalResult);
     updateHistory(finalResult);
-    console.log(JSON.stringify(finalResult, null, 2));
+attachChartsToResult(finalResult);
+saveResult(finalResult);
+console.log(JSON.stringify(finalResult, null, 2));
   } catch (err) {
     const errorResult = {
       ok: false,
