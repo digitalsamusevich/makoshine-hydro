@@ -48,6 +48,4 @@ jobs:
           name: desna-posts-json
           path: desna-posts.json
 
-    path: |
-      desna-posts.json
-      desna-history.json
+
