@@ -13,6 +13,12 @@
       "level": 346,
       "temperature": 0.5,
       "delta": 3
+    },
+    {
+      "date": "2026-03-18",
+      "level": 346,
+      "temperature": 0.4,
+      "delta": 3
     }
   ],
   "80123": [
@@ -29,6 +35,12 @@
       "level": 464,
       "temperature": 0.1,
       "delta": 10
+    },
+    {
+      "date": "2026-03-18",
+      "level": 464,
+      "temperature": 0.2,
+      "delta": 10
     }
   ],
   "80127": [
@@ -42,6 +54,12 @@
     },
     {
       "date": "2026-03-17",
+      "level": 415,
+      "temperature": 0.1,
+      "delta": 8
+    },
+    {
+      "date": "2026-03-18",
       "level": 415,
       "temperature": 0.1,
       "delta": 8
@@ -61,6 +79,12 @@
       "level": 294,
       "temperature": 1.1,
       "delta": -5
+    },
+    {
+      "date": "2026-03-18",
+      "level": 294,
+      "temperature": 1,
+      "delta": 3
     }
   ]
 }
