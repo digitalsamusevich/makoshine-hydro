@@ -7,14 +7,7 @@ const CACHE_FILE = path.join(__dirname, 'marker-cache.json');
 const OUTPUT_FILE = path.join(__dirname, 'desna-posts.json');
 const HISTORY_FILE = path.join(__dirname, 'desna-history.json');
 
-const TARGETS = [
-  { id: '80122', post: 'Новгород Сіверський' },
-  { id: '80123', post: 'Розльоти' },
-  { id: '80127', post: 'Макошине' },
-  { id: '80131', post: 'Чернігів' },
-  { id: '80133', post: 'Морівськ' },
-  { id: '80136', post: 'Літки' }
-];
+const TARGETS = require('./targets.json');
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
