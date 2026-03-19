@@ -110,5 +110,21 @@
       "temperature": 1,
       "delta": 9
     }
+  ],
+  "80133": [
+    {
+      "date": "2026-03-19",
+      "level": 242,
+      "temperature": 0.8,
+      "delta": 4
+    }
+  ],
+  "80136": [
+    {
+      "date": "2026-03-19",
+      "level": 171,
+      "temperature": 1,
+      "delta": -5
+    }
   ]
 }
