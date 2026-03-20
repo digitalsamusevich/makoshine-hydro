@@ -28,7 +28,7 @@
     },
     {
       "date": "2026-03-20",
-      "level": 358,
+      "level": 359,
       "temperature": 0.5,
       "delta": 5
     }
@@ -62,7 +62,7 @@
     },
     {
       "date": "2026-03-20",
-      "level": 481,
+      "level": 474,
       "temperature": 0.2,
       "delta": 9
     }
@@ -96,7 +96,7 @@
     },
     {
       "date": "2026-03-20",
-      "level": 428,
+      "level": 430,
       "temperature": 0.1,
       "delta": 6
     }
@@ -130,7 +130,7 @@
     },
     {
       "date": "2026-03-20",
-      "level": 314,
+      "level": 329,
       "temperature": 1,
       "delta": 11
     }
@@ -144,7 +144,7 @@
     },
     {
       "date": "2026-03-20",
-      "level": 242,
+      "level": 250,
       "temperature": 0.8,
       "delta": 4
     }
@@ -158,7 +158,7 @@
     },
     {
       "date": "2026-03-20",
-      "level": 171,
+      "level": 178,
       "temperature": 1,
       "delta": -5
     }
