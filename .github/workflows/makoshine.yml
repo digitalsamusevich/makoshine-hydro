@@ -4,6 +4,12 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '17,47 * * * *'
+    - cron: '30-59 6 * * *'
+    - cron: '0-30 7 * * *'
+
+concurrency:
+  group: makoshine-scraper
+  cancel-in-progress: true
 
 permissions:
   contents: write
