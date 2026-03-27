@@ -52,18 +52,26 @@ jobs:
           echo "=== HISTORY ==="
           cat desna-history.json || echo "no history file"
 
-      - name: Commit & push if changed
+      - name: Commit & push only if real changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
-          # Додаємо файли тільки якщо існують
+          # Старі хеші (якщо файли існують у репо)
+          OLD_POSTS=$(git rev-parse HEAD:desna-posts.json 2>/dev/null || echo "none")
+          OLD_HISTORY=$(git rev-parse HEAD:desna-history.json 2>/dev/null || echo "none")
+
+          # Додаємо нові файли
           [ -f desna-posts.json ] && git add desna-posts.json
           [ -f desna-history.json ] && git add desna-history.json
 
-          # Якщо змін нема — нічого не робимо
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
+          # Нові хеші
+          NEW_POSTS=$(git hash-object desna-posts.json 2>/dev/null || echo "none")
+          NEW_HISTORY=$(git hash-object desna-history.json 2>/dev/null || echo "none")
+
+          # Якщо нічого не змінилось — виходимо
+          if [ "$OLD_POSTS" = "$NEW_POSTS" ] && [ "$OLD_HISTORY" = "$NEW_HISTORY" ]; then
+            echo "No real data changes"
             exit 0
           fi
 
