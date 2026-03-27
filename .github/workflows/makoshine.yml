@@ -1,15 +1,18 @@
-name: Makoshine manual run
+name: Makoshine scraper
 
 on:
   workflow_dispatch:
   schedule:
+    # Загальний фоновий запуск
     - cron: '17,47 * * * *'
-    - cron: '30-59 6 * * *'
-    - cron: '0-30 7 * * *'
+
+    # 08:30–09:30 (GMT+2) = 06:30–07:30 UTC кожні 5 хв
+    - cron: '30-59/5 6 * * *'
+    - cron: '0-30/5 7 * * *'
 
 concurrency:
   group: makoshine-scraper
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -23,35 +26,40 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 22
+          cache: 'npm'
 
-      - name: Install npm dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Install Playwright browser and Linux deps
+      - name: Install Playwright (Chromium)
         run: npx playwright install --with-deps chromium
 
       - name: Run scraper
         run: node fetch-makoshine.js
 
-      - name: Show JSON result
-        run: cat desna-posts.json
+      - name: Show result
+        run: cat desna-posts.json || echo "no file"
 
-      - name: Commit JSON to repo
+      - name: Commit changes if any
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add desna-posts.json desna-history.json
-          git commit -m "update desna posts data" || echo "no changes"
-          git push
 
-      - name: Upload desna-posts.json
+          git add desna-posts.json desna-history.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "update desna posts data"
+            git push
+          fi
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: desna-posts-json
           path: desna-posts.json
-
-
