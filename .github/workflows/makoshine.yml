@@ -3,7 +3,7 @@ name: Makoshine scraper
 on:
   workflow_dispatch:
   schedule:
-    # Базові запуски
+    # Фонові запуски
     - cron: '17,47 * * * *'
 
     # 08:30–09:30 (GMT+2) = 06:30–07:30 UTC кожні 5 хв
@@ -28,6 +28,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Pull latest changes
+        run: git pull --ff-only
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -42,7 +45,7 @@ jobs:
       - name: Run scraper
         run: node fetch-makoshine.js
 
-      - name: Show result (debug)
+      - name: Debug output
         run: |
           echo "=== POSTS ==="
           cat desna-posts.json || echo "no posts file"
@@ -54,20 +57,18 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
-          # Підтягнути останні зміни щоб уникнути конфліктів
-          git pull --rebase
-
-          # Додаємо файли якщо існують
+          # Додаємо файли тільки якщо існують
           [ -f desna-posts.json ] && git add desna-posts.json
           [ -f desna-history.json ] && git add desna-history.json
 
-          # Перевірка чи є зміни
+          # Якщо змін нема — нічого не робимо
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "update desna posts data"
-            git push
+            exit 0
           fi
+
+          git commit -m "update desna posts data"
+          git push
 
       - name: Upload artifact
         if: always()
