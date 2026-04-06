@@ -738,12 +738,12 @@
       "mode": "scan",
       "found_index": 88,
       "river": "Десна",
-      "observed_at": "05.04.2026, 08:00",
-      "water_level_cm": 256,
+      "observed_at": "06.04.2026, 08:00",
+      "water_level_cm": 257,
       "delta_direction": "збільшився",
       "delta_24h_cm": 1,
-      "water_temperature_c": 9,
-      "raw_text": "Пост: Літки Річка: Десна Дані на 05.04.2026, 08:00 Фактичний рівень води: 256 см. Рівень за останню добу: збільшився на 1 см. Температура води: 9°C",
+      "water_temperature_c": 9.4,
+      "raw_text": "Пост: Літки Річка: Десна Дані на 06.04.2026, 08:00 Фактичний рівень води: 257 см. Рівень за останню добу: збільшився на 1 см. Температура води: 9.4°C",
       "history_points": [
         {
           "date": "2026-03-19",
@@ -855,14 +855,14 @@
         },
         {
           "date": "2026-04-06",
-          "level": 256,
+          "level": 257,
           "temperature": 9,
           "delta": 1
         }
       ],
-      "chart_url": "https://quickchart.io/chart?width=900&height=420&c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2219.03%22%2C%2220.03%22%2C%2221.03%22%2C%2222.03%22%2C%2223.03%22%2C%2224.03%22%2C%2225.03%22%2C%2226.03%22%2C%2227.03%22%2C%2228.03%22%2C%2229.03%22%2C%2230.03%22%2C%2231.03%22%2C%2201.04%22%2C%2202.04%22%2C%2203.04%22%2C%2204.04%22%2C%2205.04%22%2C%2206.04%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%9B%D1%96%D1%82%D0%BA%D0%B8%22%2C%22data%22%3A%5B171%2C178%2C187%2C191%2C201%2C210%2C221%2C226%2C236%2C239%2C240%2C242%2C245%2C248%2C251%2C254%2C255%2C256%2C256%5D%2C%22borderColor%22%3A%22rgb(37%2C%2099%2C%20235)%22%2C%22backgroundColor%22%3A%22rgba(37%2C%2099%2C%20235%2C%200.20)%22%2C%22fill%22%3Atrue%2C%22tension%22%3A0.35%2C%22borderWidth%22%3A3%2C%22pointRadius%22%3A4%2C%22pointHoverRadius%22%3A5%2C%22pointBackgroundColor%22%3A%22rgb(37%2C%2099%2C%20235)%22%2C%22pointBorderColor%22%3A%22%23ffffff%22%2C%22pointBorderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22layout%22%3A%7B%22padding%22%3A%7B%22top%22%3A10%2C%22right%22%3A18%2C%22bottom%22%3A10%2C%22left%22%3A10%7D%7D%2C%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%9B%D1%96%D1%82%D0%BA%D0%B8%20%E2%80%94%20%D1%80%D1%96%D0%B2%D0%B5%D0%BD%D1%8C%20%D0%B2%D0%BE%D0%B4%D0%B8%22%2C%22font%22%3A%7B%22size%22%3A18%2C%22family%22%3A%22sans-serif%22%7D%2C%22color%22%3A%22%231f2937%22%2C%22padding%22%3A%7B%22bottom%22%3A12%7D%7D%2C%22legend%22%3A%7B%22display%22%3Afalse%7D%7D%2C%22scales%22%3A%7B%22x%22%3A%7B%22ticks%22%3A%7B%22color%22%3A%22%236b7280%22%2C%22font%22%3A%7B%22size%22%3A11%7D%7D%2C%22grid%22%3A%7B%22color%22%3A%22rgba(0%2C0%2C0%2C0.04)%22%7D%7D%2C%22y%22%3A%7B%22ticks%22%3A%7B%22color%22%3A%22%236b7280%22%2C%22font%22%3A%7B%22size%22%3A11%7D%2C%22callback%22%3A%22function(value)%7B%20return%20value%20%2B%20%5C%22%20%D1%81%D0%BC%5C%22%3B%20%7D%22%7D%2C%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%A0%D1%96%D0%B2%D0%B5%D0%BD%D1%8C%2C%20%D1%81%D0%BC%22%2C%22color%22%3A%22%23374151%22%2C%22font%22%3A%7B%22size%22%3A12%7D%7D%2C%22grid%22%3A%7B%22color%22%3A%22rgba(0%2C0%2C0%2C0.06)%22%7D%7D%7D%7D%2C%22plugins%22%3A%5B%7B%22id%22%3A%22lastValueLabel%22%7D%5D%7D"
+      "chart_url": "https://quickchart.io/chart?width=900&height=420&c=%7B%22type%22%3A%22line%22%2C%22data%22%3A%7B%22labels%22%3A%5B%2219.03%22%2C%2220.03%22%2C%2221.03%22%2C%2222.03%22%2C%2223.03%22%2C%2224.03%22%2C%2225.03%22%2C%2226.03%22%2C%2227.03%22%2C%2228.03%22%2C%2229.03%22%2C%2230.03%22%2C%2231.03%22%2C%2201.04%22%2C%2202.04%22%2C%2203.04%22%2C%2204.04%22%2C%2205.04%22%2C%2206.04%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22%D0%9B%D1%96%D1%82%D0%BA%D0%B8%22%2C%22data%22%3A%5B171%2C178%2C187%2C191%2C201%2C210%2C221%2C226%2C236%2C239%2C240%2C242%2C245%2C248%2C251%2C254%2C255%2C256%2C257%5D%2C%22borderColor%22%3A%22rgb(37%2C%2099%2C%20235)%22%2C%22backgroundColor%22%3A%22rgba(37%2C%2099%2C%20235%2C%200.20)%22%2C%22fill%22%3Atrue%2C%22tension%22%3A0.35%2C%22borderWidth%22%3A3%2C%22pointRadius%22%3A4%2C%22pointHoverRadius%22%3A5%2C%22pointBackgroundColor%22%3A%22rgb(37%2C%2099%2C%20235)%22%2C%22pointBorderColor%22%3A%22%23ffffff%22%2C%22pointBorderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22layout%22%3A%7B%22padding%22%3A%7B%22top%22%3A10%2C%22right%22%3A18%2C%22bottom%22%3A10%2C%22left%22%3A10%7D%7D%2C%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%9B%D1%96%D1%82%D0%BA%D0%B8%20%E2%80%94%20%D1%80%D1%96%D0%B2%D0%B5%D0%BD%D1%8C%20%D0%B2%D0%BE%D0%B4%D0%B8%22%2C%22font%22%3A%7B%22size%22%3A18%2C%22family%22%3A%22sans-serif%22%7D%2C%22color%22%3A%22%231f2937%22%2C%22padding%22%3A%7B%22bottom%22%3A12%7D%7D%2C%22legend%22%3A%7B%22display%22%3Afalse%7D%7D%2C%22scales%22%3A%7B%22x%22%3A%7B%22ticks%22%3A%7B%22color%22%3A%22%236b7280%22%2C%22font%22%3A%7B%22size%22%3A11%7D%7D%2C%22grid%22%3A%7B%22color%22%3A%22rgba(0%2C0%2C0%2C0.04)%22%7D%7D%2C%22y%22%3A%7B%22ticks%22%3A%7B%22color%22%3A%22%236b7280%22%2C%22font%22%3A%7B%22size%22%3A11%7D%2C%22callback%22%3A%22function(value)%7B%20return%20value%20%2B%20%5C%22%20%D1%81%D0%BC%5C%22%3B%20%7D%22%7D%2C%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22%D0%A0%D1%96%D0%B2%D0%B5%D0%BD%D1%8C%2C%20%D1%81%D0%BC%22%2C%22color%22%3A%22%23374151%22%2C%22font%22%3A%7B%22size%22%3A12%7D%7D%2C%22grid%22%3A%7B%22color%22%3A%22rgba(0%2C0%2C0%2C0.06)%22%7D%7D%7D%7D%2C%22plugins%22%3A%5B%7B%22id%22%3A%22lastValueLabel%22%7D%5D%7D"
     }
   },
   "errors": [],
-  "fetched_at": "2026-04-06T05:52:35.133Z"
+  "fetched_at": "2026-04-06T06:20:05.925Z"
 }
