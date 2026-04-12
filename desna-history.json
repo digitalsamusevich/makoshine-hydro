@@ -166,7 +166,7 @@
     },
     {
       "date": "2026-04-12",
-      "level": 490,
+      "level": 491,
       "temperature": 8.6,
       "delta": 6
     }
@@ -338,7 +338,7 @@
     },
     {
       "date": "2026-04-12",
-      "level": 561,
+      "level": 571,
       "temperature": 7.7,
       "delta": 10
     }
@@ -510,7 +510,7 @@
     },
     {
       "date": "2026-04-12",
-      "level": 512,
+      "level": 516,
       "temperature": 8,
       "delta": 4
     }
@@ -682,7 +682,7 @@
     },
     {
       "date": "2026-04-12",
-      "level": 447,
+      "level": 449,
       "temperature": 8.8,
       "delta": 2
     }
@@ -834,7 +834,7 @@
     },
     {
       "date": "2026-04-12",
-      "level": 347,
+      "level": 348,
       "temperature": 8.2,
       "delta": 1
     }
@@ -986,7 +986,7 @@
     },
     {
       "date": "2026-04-12",
-      "level": 265,
+      "level": 266,
       "temperature": 8.6,
       "delta": 1
     }
