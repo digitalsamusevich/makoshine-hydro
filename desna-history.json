@@ -364,7 +364,7 @@
     },
     {
       "date": "2026-05-15",
-      "level": 407,
+      "level": 401,
       "temperature": 17,
       "delta": -5
     }
@@ -734,7 +734,7 @@
     },
     {
       "date": "2026-05-15",
-      "level": 535,
+      "level": 531,
       "temperature": 17,
       "delta": -6
     }
@@ -1104,7 +1104,7 @@
     },
     {
       "date": "2026-05-15",
-      "level": 566,
+      "level": 564,
       "temperature": 17,
       "delta": -3
     }
