@@ -5,8 +5,8 @@
     "80122": {
       "id": "80122",
       "post": "Новгород Сіверський",
-      "mode": "scan",
-      "found_index": 84,
+      "mode": "cache",
+      "found_index": 83,
       "river": "Десна",
       "observed_at": "03.06.2026, 08:00",
       "water_level_cm": 239,
@@ -509,8 +509,8 @@
     "80123": {
       "id": "80123",
       "post": "Розльоти",
-      "mode": "scan",
-      "found_index": 85,
+      "mode": "cache",
+      "found_index": 84,
       "river": "Десна",
       "observed_at": "03.06.2026, 08:00",
       "water_level_cm": 328,
@@ -1013,8 +1013,8 @@
     "80127": {
       "id": "80127",
       "post": "Макошине",
-      "mode": "scan",
-      "found_index": 86,
+      "mode": "cache",
+      "found_index": 85,
       "river": "Десна",
       "observed_at": "03.06.2026, 08:00",
       "water_level_cm": 366,
@@ -1517,8 +1517,8 @@
     "80131": {
       "id": "80131",
       "post": "Чернігів",
-      "mode": "scan",
-      "found_index": 87,
+      "mode": "cache",
+      "found_index": 86,
       "river": "Десна",
       "observed_at": "03.06.2026, 08:00",
       "water_level_cm": 400,
@@ -2022,7 +2022,7 @@
       "id": "80133",
       "post": "Морівськ",
       "mode": "scan",
-      "found_index": 88,
+      "found_index": 87,
       "river": "Десна",
       "observed_at": "03.06.2026, 08:00",
       "water_level_cm": 328,
@@ -2506,7 +2506,7 @@
       "id": "80136",
       "post": "Літки",
       "mode": "scan",
-      "found_index": 89,
+      "found_index": 88,
       "river": "Десна",
       "observed_at": "03.06.2026, 08:00",
       "water_level_cm": 263,
@@ -2988,5 +2988,5 @@
     }
   },
   "errors": [],
-  "fetched_at": "2026-06-04T00:08:20.721Z"
+  "fetched_at": "2026-06-04T05:13:38.529Z"
 }
