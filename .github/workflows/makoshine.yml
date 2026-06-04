@@ -1,84 +1,65 @@
 name: Makoshine scraper
-
 on:
   workflow_dispatch:
- schedule:
-  # Щогодини на 17-й хвилині, але НЕ в 06:xx (там своє вікно)
-  - cron: '17 0-5 * * *'
-  - cron: '17 7-23 * * *'
-  
-  # 09:30–10:00 Київ = 06:30–07:00 UTC, кожні 5 хвилин
-  - cron: '30,35,40,45,50,55 6 * * *'
-  - cron: '0 7 * * *'
-
+  schedule:
+    # Щогодини на 17-й хвилині, але НЕ в 06:xx (там своє вікно)
+    - cron: '17 0-5 * * *'
+    - cron: '17 7-23 * * *'
+    # 09:30–10:00 Київ = 06:30–07:00 UTC, кожні 5 хвилин
+    - cron: '30,35,40,45,50,55 6 * * *'
+    - cron: '0 7 * * *'
 concurrency:
   group: makoshine-scraper
   cancel-in-progress: false
-
 permissions:
   contents: write
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
       - name: Pull latest changes
         run: git pull --ff-only
-
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 22
-
       - name: Install dependencies
         run: npm install
-
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
-
       - name: Run scraper
         run: node fetch-makoshine.js
-
       - name: Debug output
         run: |
           echo "=== POSTS ==="
           cat desna-posts.json || echo "no posts file"
           echo "=== HISTORY ==="
           cat desna-history.json || echo "no history file"
-
       - name: Commit & push only if real changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-
           # Старі хеші (якщо файли існують у репо)
           OLD_POSTS=$(git rev-parse HEAD:desna-posts.json 2>/dev/null || echo "none")
           OLD_HISTORY=$(git rev-parse HEAD:desna-history.json 2>/dev/null || echo "none")
-
           # Додаємо нові файли
           [ -f desna-posts.json ] && git add desna-posts.json
           [ -f desna-history.json ] && git add desna-history.json
-
           # Нові хеші
           NEW_POSTS=$(git hash-object desna-posts.json 2>/dev/null || echo "none")
           NEW_HISTORY=$(git hash-object desna-history.json 2>/dev/null || echo "none")
-
           # Якщо нічого не змінилось — виходимо
           if [ "$OLD_POSTS" = "$NEW_POSTS" ] && [ "$OLD_HISTORY" = "$NEW_HISTORY" ]; then
             echo "No real data changes"
             exit 0
           fi
-
           git commit -m "update desna posts data"
           git push
-
       - name: Upload artifact
         if: always()
         uses: actions/upload-artifact@v4
