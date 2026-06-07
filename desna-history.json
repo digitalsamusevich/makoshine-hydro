@@ -502,7 +502,7 @@
     },
     {
       "date": "2026-06-07",
-      "level": 232,
+      "level": 231,
       "temperature": 19,
       "delta": -2
     }
@@ -1010,7 +1010,7 @@
     },
     {
       "date": "2026-06-07",
-      "level": 316,
+      "level": 313,
       "temperature": 19,
       "delta": -3
     }
@@ -1518,7 +1518,7 @@
     },
     {
       "date": "2026-06-07",
-      "level": 325,
+      "level": 317,
       "temperature": 20,
       "delta": -12
     }
@@ -2026,7 +2026,7 @@
     },
     {
       "date": "2026-06-07",
-      "level": 369,
+      "level": 354,
       "temperature": 19,
       "delta": -13
     }
@@ -2514,7 +2514,7 @@
     },
     {
       "date": "2026-06-07",
-      "level": 289,
+      "level": 275,
       "temperature": 19,
       "delta": -13
     }
@@ -3002,7 +3002,7 @@
     },
     {
       "date": "2026-06-07",
-      "level": 235,
+      "level": 225,
       "temperature": 19,
       "delta": -9
     }
