@@ -1202,7 +1202,7 @@
     },
     {
       "date": "2026-06-23",
-      "level": 273,
+      "level": 272,
       "temperature": 21,
       "delta": -2
     }
@@ -1806,7 +1806,7 @@
     },
     {
       "date": "2026-06-23",
-      "level": 230,
+      "level": 227,
       "temperature": 22,
       "delta": -4
     }
@@ -2410,7 +2410,7 @@
     },
     {
       "date": "2026-06-23",
-      "level": 208,
+      "level": 203,
       "temperature": 22,
       "delta": -4
     }
@@ -2994,7 +2994,7 @@
     },
     {
       "date": "2026-06-23",
-      "level": 173,
+      "level": 171,
       "temperature": 22,
       "delta": -6
     }
