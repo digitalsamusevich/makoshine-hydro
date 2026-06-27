@@ -622,7 +622,7 @@
     },
     {
       "date": "2026-06-27",
-      "level": 196,
+      "level": 195,
       "temperature": 23,
       "delta": -1
     }
@@ -1250,7 +1250,7 @@
     },
     {
       "date": "2026-06-27",
-      "level": 269,
+      "level": 267,
       "temperature": 23,
       "delta": -1
     }
@@ -1878,7 +1878,7 @@
     },
     {
       "date": "2026-06-27",
-      "level": 217,
+      "level": 215,
       "temperature": 23,
       "delta": -3
     }
@@ -2506,7 +2506,7 @@
     },
     {
       "date": "2026-06-27",
-      "level": 188,
+      "level": 185,
       "temperature": 24,
       "delta": -4
     }
@@ -3114,7 +3114,7 @@
     },
     {
       "date": "2026-06-27",
-      "level": 159,
+      "level": 157,
       "temperature": 24,
       "delta": -4
     }
