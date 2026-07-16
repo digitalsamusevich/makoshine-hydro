@@ -736,7 +736,7 @@
     },
     {
       "date": "2026-07-16",
-      "level": 205,
+      "level": 208,
       "temperature": 22,
       "delta": 2
     }
@@ -1478,7 +1478,7 @@
     },
     {
       "date": "2026-07-16",
-      "level": 273,
+      "level": 274,
       "temperature": 22,
       "delta": 2
     }
@@ -2220,7 +2220,7 @@
     },
     {
       "date": "2026-07-16",
-      "level": 199,
+      "level": 200,
       "temperature": 22,
       "delta": 1
     }
@@ -2962,7 +2962,7 @@
     },
     {
       "date": "2026-07-16",
-      "level": 149,
+      "level": 150,
       "temperature": 23,
       "delta": 0
     }
