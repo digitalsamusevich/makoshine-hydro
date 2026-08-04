@@ -1,5 +1,38 @@
 {
   "ok": false,
-  "error": "page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://www.meteo.gov.ua/ua/Shchodenna-hidrolohichna-situaciya\", waiting until \"domcontentloaded\"\n",
-  "fetched_at": "2026-08-04T09:27:36.287Z"
+  "river_group": "Десна",
+  "posts": {},
+  "errors": [
+    {
+      "id": "80122",
+      "post": "Новгород Сіверський",
+      "error": "Не вдалося знайти пост: Новгород Сіверський"
+    },
+    {
+      "id": "80123",
+      "post": "Розльоти",
+      "error": "Не вдалося знайти пост: Розльоти"
+    },
+    {
+      "id": "80127",
+      "post": "Макошине",
+      "error": "Не вдалося знайти пост: Макошине"
+    },
+    {
+      "id": "80131",
+      "post": "Чернігів",
+      "error": "Не вдалося знайти пост: Чернігів"
+    },
+    {
+      "id": "80133",
+      "post": "Морівськ",
+      "error": "Не вдалося знайти пост: Морівськ"
+    },
+    {
+      "id": "80136",
+      "post": "Літки",
+      "error": "Не вдалося знайти пост: Літки"
+    }
+  ],
+  "fetched_at": "2026-08-04T09:29:45.689Z"
 }
