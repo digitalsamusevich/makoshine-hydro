@@ -1,5 +1,5 @@
 {
   "ok": false,
   "error": "page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://www.meteo.gov.ua/ua/Shchodenna-hidrolohichna-situaciya\", waiting until \"domcontentloaded\"\n",
-  "fetched_at": "2026-08-06T09:29:38.822Z"
+  "fetched_at": "2026-08-06T09:31:55.214Z"
 }
