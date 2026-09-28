@@ -1177,6 +1177,12 @@
       "level": 173,
       "temperature": 15,
       "delta": 2
+    },
+    {
+      "date": "2026-09-28",
+      "level": 175,
+      "temperature": 15,
+      "delta": 2
     }
   ],
   "80123": [
@@ -2355,6 +2361,12 @@
     {
       "date": "2026-09-27",
       "level": 240,
+      "temperature": 14,
+      "delta": 1
+    },
+    {
+      "date": "2026-09-28",
+      "level": 241,
       "temperature": 14,
       "delta": 1
     }
@@ -3537,6 +3549,12 @@
       "level": 162,
       "temperature": 15,
       "delta": 0
+    },
+    {
+      "date": "2026-09-28",
+      "level": 163,
+      "temperature": 15,
+      "delta": 1
     }
   ],
   "80131": [
@@ -4717,6 +4735,12 @@
       "level": 107,
       "temperature": 16,
       "delta": 0
+    },
+    {
+      "date": "2026-09-28",
+      "level": 108,
+      "temperature": 16,
+      "delta": 1
     }
   ],
   "80133": [
@@ -5877,6 +5901,12 @@
       "level": 92,
       "temperature": 15,
       "delta": 1
+    },
+    {
+      "date": "2026-09-28",
+      "level": 93,
+      "temperature": 15,
+      "delta": 1
     }
   ],
   "80136": [
@@ -7034,6 +7064,12 @@
     },
     {
       "date": "2026-09-27",
+      "level": 56,
+      "temperature": 14,
+      "delta": 0
+    },
+    {
+      "date": "2026-09-28",
       "level": 56,
       "temperature": 14,
       "delta": 0
